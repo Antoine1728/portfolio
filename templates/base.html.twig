@@ -1,19 +1,114 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<title>
+			{% block title %}Portfolio
+			{% endblock %}
+		</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/css.css"> {% block stylesheets %}{% endblock %}
+		</head>
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+		<body>
+
+			<!-- Navbar (sit on top) -->
+			<div class="w3-top">
+				<div class="w3-bar w3-white w3-card" id="myNavbar">
+					<a href="#home" class="w3-bar-item w3-button w3-wide">Home</a>
+					<!-- Right-sided navbar links -->
+					<div class="w3-right w3-hide-small">
+						<a href="#about" class="w3-bar-item w3-button">
+							<i class="fa fa-user"></i>
+							A propos</a>
+						<a href="#skills" class="w3-bar-item w3-button">
+							<i class="fa fa-gears"></i>
+							Mes skills</a>
+						<a href="#projets" class="w3-bar-item w3-button">
+							<i class="fa fa-laptop"></i>
+							Mes projets</a>
+					</div>
+					<!-- Hide right-floated links on small screens and replace them with a menu icon -->
+					<a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+						<i class="fa fa-bars"></i>
+					</a>
+				</div>
+			</div>
+
+			<!-- Sidebar on small screens when clicking the menu icon -->
+			<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+				<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">×</a>
+				<a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">A propos</a>
+				<a href="#skills" onclick="w3_close()" class="w3-bar-item w3-button">Mes skills</a>
+				<a href="#projets" onclick="w3_close()" class="w3-bar-item w3-button">Mes projets</a>
+			</nav>
+
+			<!-- Header with full-height image -->
+			<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+				<div class="w3-display-left w3-text-white" style="padding:48px">
+					<span class="w3-jumbo w3-hide-small">Antoine Morau-Sanson</span><br>
+					<span class="w3-xxlarge w3-hide-large w3-hide-medium">Antoine Morau-Sanson</span><br>
+					<span class="w3-large">Developpeur Web et Web Mobile</span>
+				</div>
+				<div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+					<a href="https://github.com/Antoine1728" target="blank" style="text-decoration: none" ;>
+						<i class="fa fa-github w3-hover-opacity"></i>
+					</a>
+					<a href="https://www.linkedin.com/in/antoine-morau-sanson/" target="blank" style="text-decoration: none" ;>
+						<i class="fa fa-linkedin w3-hover-opacity"></i>
+					</a>
+				</div>
+			</header>
+
+			<!-- Main content block -->
+			{% block body %}
+				<div class="content">
+					{% block content %}{% endblock %}
+				</div>
+			{% endblock %}
+
+			<!-- Footer -->
+			<footer class="w3-center w3-black w3-padding-64">
+				<div class="w3-xlarge w3-section">
+					<a href="https://github.com/Antoine1728" target="blank" style="text-decoration: none" ;>
+						<i class="fa fa-github w3-hover-opacity"></i>
+					</a>
+					<a href="https://www.linkedin.com/in/antoine-morau-sanson/" target="blank" style="text-decoration: none" ;>
+						<i class="fa fa-linkedin w3-hover-opacity"></i>
+					</a>
+				</div>
+				<p>Antoine Morau-Sanson
+				</p>
+			</footer>
+
+			<script>
+				// Modal Image Gallery
+function onClick(element) {
+document.getElementById("img01").src = element.src;
+document.getElementById("modal01").style.display = "block";
+var captionText = document.getElementById("caption");
+captionText.innerHTML = element.alt;
+}
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+if (mySidebar.style.display === 'block') {
+mySidebar.style.display = 'none';
+} else {
+mySidebar.style.display = 'block';
+}
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+mySidebar.style.display = "none";
+}
+			</script>
+		</body>
+	</html>
+</body></html>
